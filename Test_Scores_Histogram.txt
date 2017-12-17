@@ -1,0 +1,60 @@
+* Reading Data in a text file;
+DATA TestScores;
+	INFILE '/folders/myfolders/TestScores.txt';
+	INPUT Scores @@;
+RUN;
+PROC MEANS DATA = TestScores;
+	OUTPUT OUT = Average MEAN(Scores)=MeanScore;
+RUN;
+
+* Histogram of Scores with affects added and an x-axis label;
+PROC SGPLOT DATA = TestScores;
+	HISTOGRAM Scores / SHOWBINS DATASKIN = CRISP;
+	XAXIS LABEL = 'Test Scores';
+	TITLE 'Histgram of Test Scores';
+RUN;
+
+
+
+
+ 1          OPTIONS NONOTES NOSTIMER NOSOURCE NOSYNTAXCHECK;
+ 61         
+ 62         * Reading Data in a text file;
+ 63         DATA TestScores;
+ 64         INFILE '/folders/myfolders/TestScores.txt';
+ 65         INPUT Scores @@;
+ 66         RUN;
+ 
+ NOTE: The infile '/folders/myfolders/TestScores.txt' is:
+       Filename=/folders/myfolders/TestScores.txt,
+       Owner Name=sasdemo,Group Name=sas,
+       Access Permission=-rw-rw-r--,
+       Last Modified=11Sep2017:16:06:44,
+       File Size (bytes)=730
+ 
+ NOTE: 16 records were read from the infile '/folders/myfolders/TestScores.txt'.
+       The minimum record length was 0.
+       The maximum record length was 47.
+ NOTE: SAS went to a new line when INPUT statement reached past the end of a line.
+ NOTE: The data set WORK.TESTSCORES has 90 observations and 1 variables.
+ NOTE: DATA statement used (Total process time):
+       real time           0.01 seconds
+       cpu time            0.01 seconds
+       
+ 
+ 67         * Histogram of Scores with affects added and an x-axis label;
+ 68         PROC SGPLOT DATA = TestScores;
+ 69         HISTOGRAM Scores / SHOWBINS DATASKIN = CRISP;
+ 70         XAXIS LABEL = 'Test Scores';
+ 71         RUN;
+ 
+ NOTE: PROCEDURE SGPLOT used (Total process time):
+       real time           4.23 seconds
+       cpu time            0.94 seconds
+       
+ NOTE: There were 90 observations read from the data set WORK.TESTSCORES.
+ 
+ 72         
+ 73         OPTIONS NONOTES NOSTIMER NOSOURCE NOSYNTAXCHECK;
+ 86      
+
